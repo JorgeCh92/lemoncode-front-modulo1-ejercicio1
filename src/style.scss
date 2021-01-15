@@ -1,0 +1,69 @@
+html, body, .containers {
+    width: 100%;
+    height: 100%;
+}
+
+@for $contain from 1 through 3 {
+    .container-#{$contain} {
+        width: 100%;
+        height: 8%;
+        display: flex;
+        flex-direction: row;
+        column-gap: 0.5%;
+        padding-bottom: 0.5%;
+
+        div {
+            border-radius: 5px;
+            color: grey;
+            padding: 0 0.5%;
+        }
+
+        .base-color {
+            color: white;
+
+            @if $contain == 1 {
+                background-color: red;
+            }
+            @else if $contain == 2 {
+                background-color: blue;
+            }
+            @else if $contain == 3 {
+                background-color: green;
+            }
+        }
+
+        $dark: 4;
+        @while $dark >= 1 {
+            .darken-#{$dark} {
+                @if $contain == 1 {
+                    background-color: darken(red, 1%+$dark*5);
+                }
+                @else if $contain == 2 {
+                    background-color: darken(blue, 1%+$dark*5);
+                }
+                @else if $contain == 3 {
+                    background-color: darken(green, 1%+$dark*5);
+                }
+            }
+
+            $dark: $dark - 1;
+        }
+
+        $light: 4;
+        @while $light >= 1 {
+            .lighten-#{$light} {
+                @if $contain == 1 {
+                    background-color: lighten(red, 1%+$light*5);
+                }
+                @else if $contain == 2 {
+                    background-color: lighten(blue, 1%+$light*5);
+                }
+                @else if $contain == 3 {
+                    background-color: lighten(green, 1%+$light*5);
+                }
+            }
+
+            $light: $light - 1;
+        }
+    }
+}
